@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "tdd"
+version = "0.1.0"
+description = ""
+authors = ["viktor d <10xl.pro@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.4"
+selenium = "^4.19.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
