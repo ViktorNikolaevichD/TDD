@@ -28,7 +28,7 @@ class HomePageTest(TestCase):
         response = self.client.post('/', data={'item_text': 'A new list item'})
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/')
+        self.assertEqual(response['location'], '/lists/unique-url/')
         # self.assertIn('A new list item', responce.content.decode())
         # self.assertTemplateUsed(responce, 'home.html')
     
@@ -37,15 +37,20 @@ class HomePageTest(TestCase):
         self.client.get('/')
         self.assertEqual(Item.objects.count(), 0)
 
-    def test_displays_all_list_items(self):
-        '''Тест: отображаются все элементы списка'''
-        Item.objects.create(text='itemy 1')
-        Item.objects.create(text='itemy 2')
+    def test_uses_list_template(self):
+        '''Тест: используется шаблон списка'''
+        response = self.client.get('/lists/unique-url/')
+        self.assertTemplateUsed(response, 'list.html')
+        
+    # def test_displays_all_list_items(self):
+    #     '''Тест: отображаются все элементы списка'''
+    #     Item.objects.create(text='itemy 1')
+    #     Item.objects.create(text='itemy 2')
 
-        response = self.client.get('/')
+    #     response = self.client.get('/')
 
-        self.assertIn('itemy 1', response.content.decode())
-        self.assertIn('itemy 2', response.content.decode())
+    #     self.assertIn('itemy 1', response.content.decode())
+    #     self.assertIn('itemy 2', response.content.decode())
 
 
 class ItemModelTest(TestCase):
@@ -68,3 +73,16 @@ class ItemModelTest(TestCase):
         second_saved_item = saved_items[1]
         self.assertEqual(first_saved_item.text, 'The first (ever) list item')
         self.assertEqual(second_saved_item.text, 'Item the second')
+
+
+class ListViewTest(TestCase):
+    '''Тест представления списка'''
+    def test_displays_all_items(self):
+        '''Тест: отображаются все элементы списка'''
+        Item.objects.create(text='itemy 1')
+        Item.objects.create(text='itemy 2')
+
+        response = self.client.get('/lists/unique-url/')
+
+        self.assertContains(response, 'itemy 1')
+        self.assertContains(response, 'itemy 2')
