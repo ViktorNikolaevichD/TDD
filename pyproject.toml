@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "tdd"
+name = "rememberlist"
 version = "0.1.0"
 description = ""
-authors = ["viktor d <10xl.pro@mail.ru>"]
+authors = ["root"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 django = "^5.0.4"
-selenium = "^4.19.0"
+selenium = "^4.20.0"
 gunicorn = "^22.0.0"
 fabric3 = "^1.14.post1"
 

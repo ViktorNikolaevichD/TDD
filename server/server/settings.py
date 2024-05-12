@@ -24,9 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5e5m$!kxp35ln9kt($l71ei9m=91=g-1qy($#1_a^kh+g3&bdr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = ['localhost', 'rememberlist.store']
+CSRF_TRUSTED_ORIGINS = ['https://*.rememberlist.store']
 
 
 # Application definition
@@ -118,7 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static/'))
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../../static/'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
