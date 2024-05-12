@@ -28,7 +28,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['localhost', 'rememberlist.store']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'rememberlist.store']
 CSRF_TRUSTED_ORIGINS = ['https://*.rememberlist.store']
 
 
