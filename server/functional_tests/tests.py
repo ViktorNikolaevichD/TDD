@@ -80,7 +80,6 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # Эдит интересно, запомнит ли сайт ее список. Далее она видит, что
         # сайт сгенерировал для нее уникальный URL-адрес - об этом
         # выводится небольшой текст с объяснениями
-        self.fail('Закончить тест')
 
         # Она посещает этот URL-адрес - ее список по прежнему там
 
@@ -127,8 +126,6 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.assertNotIn('Купить павлиньи перья', page_text)
         self.assertIn('Купить молоко', page_text)
         
-        self.fail('Закончить тест')
-
     def test_layout_and_styling(self):
         '''Тест: макет и стилевое оформление'''
         # Эдит открывает домашнюю страницу
@@ -154,5 +151,3 @@ class NewVisitorTest(StaticLiveServerTestCase):
             512,
             delta=10
         )
-
-        self.fail('Закончить тест')
