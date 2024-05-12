@@ -240,6 +240,21 @@ files = [
 test = ["pytest (>=6)"]
 
 [[package]]
+name = "fabric3"
+version = "1.14.post1"
+description = "Fabric is a simple, Pythonic tool for remote execution and deployment (py2.7/py3.4+ compatible fork)."
+optional = false
+python-versions = "*"
+files = [
+    {file = "Fabric3-1.14.post1-py3-none-any.whl", hash = "sha256:7c5a5f2eb3079eb6bd2a69931f1ca298844c730ce3fdc68111db16e8857a0408"},
+    {file = "Fabric3-1.14.post1.tar.gz", hash = "sha256:647e485ec83f30b587862f92374d6affc217f3d79819d1d7f512e42e7ae51e81"},
+]
+
+[package.dependencies]
+paramiko = ">=2.0,<3.0"
+six = ">=1.10.0"
+
+[[package]]
 name = "gunicorn"
 version = "22.0.0"
 description = "WSGI HTTP Server for UNIX"
@@ -540,4 +555,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "805f992c9214d77041a224eb4eab306e093b25a15c7442ea0c8cb079be301a32"
+content-hash = "d91d59e79b7d560b765f2a902b3d02d88638545a85cf1498291e65d640d019c4"
