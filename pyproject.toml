@@ -14,11 +14,6 @@ fabric = {git = "https://github.com/fabric/fabric.git", rev = "2.7"}
 patchwork = "^1.0.1"
 
 
-[[tool.poetry.source]]
-name = "patchwork3"
-url = "https://github.com/getpatchwork/patchwork.git"
-priority = "supplemental"
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
