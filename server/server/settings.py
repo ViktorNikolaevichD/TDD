@@ -1,3 +1,4 @@
+# Немножко обновлений
 """
 Django settings for server project.
 
