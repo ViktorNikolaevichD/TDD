@@ -3,9 +3,10 @@ Description=Gunicorn server for SITENAME
 
 [Service]
 Restart=on-failure
-User=elspeth
-WorkingDirectory=/home/elspeth/sites/SITENAME/source
-ExecStart=/home/elspeth/sites/SITENAME/virtualenv/bin/gunicorn --bind unix:/tmp/SITENAME.socket server.wsgi:application
+User=siteadmin
+WorkingDirectory=/home/siteadmin/sites/SITENAME/source
+
+ExecStart=/home/siteadmin/.cache/pypoetry/virtualenvs/SITENAME*/bin/gunicorn --bind unix:/tmp/SITENAME.socket server.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
