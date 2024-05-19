@@ -38,7 +38,7 @@ class ListAndItemModelsTest(TestCase):
     def test_cannot_save_empty_list_items(self):
         '''Тест: нельзя добавлять пустые элементы списка'''
         list_ = List.objects.create()
-        item = Item(list=list_, text='')
+        item1 = Item(list=list_, text='')
         with self.assertRaises(ValidationError):
-            item.save()
-            item.full_clean()
+            item1.full_clean()
+            item1.save()
