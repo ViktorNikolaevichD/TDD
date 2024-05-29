@@ -2,15 +2,27 @@ from django.test import TestCase
 from django.utils.html import escape
 
 from lists.models import Item, List
+from lists.forms import ItemForm
 
 class HomePageTest(TestCase):
     '''Тест домашней страницы'''
 
-    def test_home_page_return_correct_html(self):
-        '''Тест: домашняя страница возвращает правильный html'''
+    def test_home_home_template(self):
+        '''Тест: использует домашний шаблон'''
         response = self.client.get('/')
 
         self.assertTemplateUsed(response, 'home.html')
+
+    def test_home_page_uses_item_form(self):
+        '''Тест: домашняя страница использует форму для элемента'''
+        response = self.client.get('/')
+        self.assertIsInstance(response.context['form'], ItemForm)
+
+    # def test_home_page_return_correct_html(self):
+    #     '''Тест: домашняя страница возвращает правильный html'''
+    #     response = self.client.get('/')
+
+    #     self.assertTemplateUsed(response, 'home.html')
         
     # def test_displays_all_list_items(self):
     #     '''Тест: отображаются все элементы списка'''
