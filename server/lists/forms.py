@@ -11,7 +11,10 @@ class ItemForm(forms.models.ModelForm):
     #         'class': 'form-control input-lg',
     #     }),
     # )
-
+    def save(self, for_list):
+        self.instance.list = for_list
+        return super().save()
+    
     class Meta:
         model = Item
         fields = ('text', )

@@ -1,6 +1,6 @@
 from django.test import TestCase
 from lists.forms import EMPTY_ITEM_ERROR, ItemForm
-
+from lists.models import Item, List
 class ItemFormTest(TestCase):
     '''Тест формы для элемента списка'''
 
@@ -8,6 +8,15 @@ class ItemFormTest(TestCase):
     #     '''Тест: форма отображает текстовое поле ввода'''
     #     form = ItemForm()
     #     self.fail(form.as_p())
+    def test_form_save_handles_saving_to_a_list(self):
+        '''Тест: метод save формы обрабатывает сохранение в список'''
+        list_ = List.objects.create()
+        form = ItemForm(data={'text': 'do me'})
+        new_item = form.save(for_list=list_)
+        self.assertEqual(new_item, Item.objects.first())
+        self.assertEqual(new_item.text, 'do me')
+        self.assertEqual(new_item.list, list_)
+        
 
     def test_form_item_input_has_placeholder_and_css_classes(self):
         '''Тест: поле ввода имеет атрибут placeholder и css-классы'''
