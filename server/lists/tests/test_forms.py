@@ -36,6 +36,13 @@ class ItemFormTest(TestCase):
 class ExistingListItemFormTest(TestCase):
     '''Тест формы элемента существующего списка'''
 
+    def test_form_save(self):
+        '''Тест сохранения формы'''
+        list_ = List.objects.create()
+        form = ExistingListItemForm(for_list=list_, data={'text': 'hi'})
+        new_item = form.save()
+        self.assertEqual(new_item, Item.objects.all()[0])
+
     def test_form_renders_item_text_input(self):
         '''Тест: форма отображает текстовый ввод элемента'''
         list_ = List.objects.create()
