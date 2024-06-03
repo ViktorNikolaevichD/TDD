@@ -47,8 +47,6 @@ class ItemModelTest(TestCase):
             item1.full_clean()
             item1.save()
 
-    
-
     def test_duplicate_items_are_invalid(self):
         '''Тест: повторы элементов не допустимы'''
         list_ = List.objects.create()
