@@ -45,9 +45,9 @@ class LoginTest(FunctionalTest):
         self.browser.get(self.live_server_url)
         self.browser.find_element(By.NAME, 'email').send_keys(TEST_EMAIL)
         self.browser.find_element(By.NAME, 'email').send_keys(Keys.ENTER)
-
         # Появляется сообщение, которое говорит, что ей на почту
         # было выслано электронное письмо
+        #print(mail.outbox)
         self.wait_for(lambda: self.assertIn(
             'Check your email',
             self.browser.find_element(By.TAG_NAME, 'body').text
@@ -55,15 +55,15 @@ class LoginTest(FunctionalTest):
 
         # Эдит проверяет свою почту и находит сообщение
         #print(self.get_sent_email())
-        email = self.get_sent_email()
-        self.assertIn(TEST_EMAIL, email[1])
-        self.assertIn(SUBJECT, email[2])
+        email = mail.outbox[0]
+        self.assertIn(TEST_EMAIL, email.to)
+        self.assertEqual(email.subject, SUBJECT)
 
         # Оно содержит ссылку на url-адрес
-        self.assertIn('Use this link to log in', email[3])
-        url_search = re.search(r'http://.+/.+$', email[3])
+        self.assertIn('Use this link to log in', email.body)
+        url_search = re.search(r'http://.+/.+$', email.body)
         if not url_search:
-            self.fail(f'Could not find url in email body:\n{email[3]}')
+            self.fail(f'Could not find url in email body:\n{email.body}')
         url = url_search.group(0)
         self.assertIn(self.live_server_url, url)
 

@@ -2,7 +2,7 @@ import time
 import os
 
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from selenium import webdriver
+from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
 
@@ -13,15 +13,15 @@ class FunctionalTest(StaticLiveServerTestCase):
 
     def setUp(self):
         '''Установка'''
-        self.browser = webdriver.Firefox()
-        staging_server = os.environ.get('STAGING_SERVER') #"rememberlist.store"  
+        self.browser = WebDriver()
+        staging_server = os.environ.get('STAGING_SERVER')  # "rememberlist.store"  
         if staging_server:
-            self.live_server_url = 'https://' + staging_server
+            self.live_server_url = 'http://' + staging_server
 
     def tearDown(self):
         '''Удаление'''
         self.browser.quit()
-    
+        
     def wait_for(self, fn):
         '''Ожидать'''
         start_time = time.time()
