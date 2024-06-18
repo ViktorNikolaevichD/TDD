@@ -33,7 +33,10 @@ def login(request):
     print('login view', file=sys.stderr)
     uid = request.GET.get('token')
     user = auth.authenticate(request, uid=uid)
-    print(user)
     if user:
         auth.login(request, user)
+    return redirect('/')
+
+def logout(request):
+    auth.logout(request)
     return redirect('/')
