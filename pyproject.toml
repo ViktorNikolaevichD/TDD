@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "rememberlist"
+name = "tdd"
 version = "0.1.0"
 description = ""
-authors = ["root"]
+authors = ["Victor <10xl.pro@mail.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -12,6 +12,7 @@ selenium = "^4.20.0"
 gunicorn = "^22.0.0"
 fabric = {git = "https://github.com/fabric/fabric.git", rev = "2.7"}
 patchwork = "^1.0.1"
+invocations = "^3.3.0"
 
 
 [build-system]
