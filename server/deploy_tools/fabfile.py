@@ -55,9 +55,9 @@ def _update_settings(c: Connection, source_folder, site_name):
 
 
     ## Здесь нужно будет в какой-то момент добавить виртуальное окружение для секретного ключа
-    key = get_random_secret_key()
+    # key = get_random_secret_key()
 
-    c.run(f'sed -ri "s/SECRET_KEY = .+$/SECRET_KEY = \'{key}\'/g" {settings_path}', hide=True)
+    # c.run(f'sed -ri "s/SECRET_KEY = .+$/SECRET_KEY = \'{key}\'/g" {settings_path}', hide=True)
     
 
 def _update_virtualenv(c: Connection, source_folder, venv_folder):
