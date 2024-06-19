@@ -16,7 +16,7 @@ def deploy():
     c = Connection(host='5.35.86.205', user='root', port=22, config=config, connect_kwargs={'password': password})
     site_folder = f'/home/{user}/sites/{host}'
     source_folder = site_folder + '/source'
-    venv_folder = f'/home/{user}/.cache/pypoetry/virtualenvs/rememberlist-*'
+    venv_folder = f'/home/{user}/.cache/pypoetry/virtualenvs/tdd-*'
     #_update_settings(c, source_folder, c.host)
     _create_directory_structure_if_necessery(c, site_folder)
     _get_latest_source(c, source_folder)
@@ -64,7 +64,7 @@ def _update_virtualenv(c: Connection, source_folder, venv_folder):
     '''Обновить виртуальную среду'''
     try:
         c.run(f'rm -r {venv_folder}')
-    except NothingToDo:
+    except (Exception, NothingToDo):
         pass
     
     c.run(f'cd {source_folder} && poetry update')

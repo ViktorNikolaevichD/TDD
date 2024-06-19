@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lists',
     'accounts',
+    'functional_tests',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -134,6 +135,12 @@ STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static/'))
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# E-MAIL imap
+IMAP_SERVER = "imap.mail.ru"
+IMAP_PORT = 993
+USER_NAME = "10xl.pro@mail.ru"
+EMAIL_PASSWORD = "X9whQMczgHFb6e4CMVM9"
 
 # E-MAIL stmp
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
