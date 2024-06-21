@@ -6,7 +6,7 @@ Restart=on-failure
 User=siteadmin
 WorkingDirectory=/home/siteadmin/sites/SITENAME/source
 
-ExecStart=/home/siteadmin/.cache/pypoetry/virtualenvs/SITENAME*/bin/gunicorn --bind unix:/tmp/SITENAME.socket server.wsgi:application
+ExecStart=/home/siteadmin/.cache/pypoetry/virtualenvs/SITENAME*/bin/gunicorn --bind unix:/tmp/SITENAME.socket --access-logfile ../access.log --error-logfile ../error.log server.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
