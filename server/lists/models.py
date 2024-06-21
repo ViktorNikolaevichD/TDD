@@ -7,6 +7,11 @@ class List(models.Model):
     '''Список для элементов'''
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.CASCADE)
 
+    @property
+    def name(self):
+        '''Имя'''
+        return self.item_set.first().text
+
     def get_absolute_url(self):
         return reverse("view_list", args=[self.pk])
     
